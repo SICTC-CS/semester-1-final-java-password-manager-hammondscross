@@ -1,7 +1,7 @@
 public class PasswordValidator {
     private static final String SPECIAL_CHARS = "!@#$%^&*()_+-=[]{}|;:,.<>?";
-    // Average attempts per second for a modern computer
-    private static final long ATTEMPTS_PER_SECOND = 1_000_000_000L; // 1 billion
+    // apparently the average attempts per second for a modern computer
+    private static final long ATTEMPTS_PER_SECOND = 1_000_000_000L;
     
     public static boolean isValid(String password) {
         return password.length() >= 8 &&
@@ -15,20 +15,20 @@ public class PasswordValidator {
     }
     
     public static double calculateCrackTime(String password) {
-        // Calculate possible character set size
+        // possible character set size
         int charSetSize = 0;
         if (password.matches(".*[a-z].*")) charSetSize += 26; // lowercase
         if (password.matches(".*[A-Z].*")) charSetSize += 26; // uppercase
         if (password.matches(".*[0-9].*")) charSetSize += 10; // numbers
         if (containsSpecialChar(password)) charSetSize += SPECIAL_CHARS.length();
         
-        // Calculate total possible combinations
+        // calc total possible combos
         double combinations = Math.pow(charSetSize, password.length());
         
-        // Average case is checking half of all possibilities
+        //checking half of all possibilities
         double averageAttempts = combinations / 2;
         
-        // Calculate time in seconds
+        // time in seconds
         double seconds = averageAttempts / ATTEMPTS_PER_SECOND;
         
         return seconds;

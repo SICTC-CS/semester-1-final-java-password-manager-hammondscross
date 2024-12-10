@@ -41,7 +41,7 @@ public class Main {
                         running = false;
                         break;
                     default:
-                        System.out.println("Invalid choice. Please try again.");
+                        System.out.println("Bad option. Please try again.");
                 }
             }
         }
@@ -50,10 +50,10 @@ public class Main {
     }
     
     private static boolean login() {
-        System.out.println("Welcome to Password Manager!");
+        System.out.println("Welcome to HammondsCross Password Manager!");
         System.out.println("1. Login");
         System.out.println("2. Create Account");
-        System.out.print("Choose an option: ");
+        System.out.print("Pick an option: ");
         
         int choice = getMenuChoice();
         switch (choice) {
@@ -62,7 +62,7 @@ public class Main {
             case 2:
                 return createNewUser();
             default:
-                System.out.println("Invalid choice. Please try again.");
+                System.out.println("Bad option. Please try again.");
                 return false;
         }
     }
@@ -88,7 +88,7 @@ public class Main {
                 }
             }
         }
-        System.out.println("Too many failed attempts. Program will now exit.");
+        System.out.println("Too many failed attempts. Program will now crash LOL.");
         return false;
     }
     
@@ -174,20 +174,20 @@ public class Main {
     }
     
     private static void generatePassword() {
-        System.out.print("Enter desired password length (minimum 8): ");
+        System.out.print("Enter desired password length (minimum 8) (default 12): ");
         try {
             int length = Integer.parseInt(scanner.nextLine());
             String password = PasswordGenerator.generatePassword(length);
             System.out.println("Generated Password: " + password);
             
             if (PasswordValidator.isValid(password)) {
-                System.out.println("Password meets all requirements!");
+                System.out.println("Password meets all requirements yay!");
                 double crackTime = PasswordValidator.calculateCrackTime(password);
                 System.out.println("Estimated time to crack: " + 
                     PasswordValidator.getReadableCrackTime(crackTime));
             }
         } catch (NumberFormatException e) {
-            System.out.println("Invalid input. Using default length of 12");
+            System.out.println("Bad input. Using default length of 12");
             String password = PasswordGenerator.generatePassword(12);
             System.out.println("Generated Password: " + password);
         }
@@ -198,7 +198,7 @@ public class Main {
         String password = scanner.nextLine();
         
         if (PasswordValidator.isValid(password)) {
-            System.out.println("Password meets all requirements!");
+            System.out.println("Password meets all requirements yay!");
             double crackTime = PasswordValidator.calculateCrackTime(password);
             System.out.println("Estimated time to crack: " + 
                 PasswordValidator.getReadableCrackTime(crackTime));
@@ -299,7 +299,7 @@ public class Main {
                 return;
             }
             if (choice < 1 || choice > accounts.size()) {
-                System.out.println("Invalid account number.");
+                System.out.println("Null account number.");
                 return;
             }
             

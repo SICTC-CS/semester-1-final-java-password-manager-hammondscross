@@ -10,23 +10,23 @@ public class PasswordGenerator {
     private static final String SPECIAL = "!@#$%^&*()_+-=[]{}|;:,.<>?";
     
     public static String generatePassword(int length) {
-        if (length < 8) length = 8; // Minimum length
+        if (length < 8) length = 8; // min length
         
         StringBuilder password = new StringBuilder();
         Random random = new Random();
         
-        // Ensure at least one of each required character type
+        // at least one of each required character type
         password.append(UPPERCASE.charAt(random.nextInt(UPPERCASE.length())));
         password.append(NUMBERS.charAt(random.nextInt(NUMBERS.length())));
         password.append(SPECIAL.charAt(random.nextInt(SPECIAL.length())));
         
-        // Fill the rest randomly
+        // fill rest randomly
         String allChars = LOWERCASE + UPPERCASE + NUMBERS + SPECIAL;
         while (password.length() < length) {
             password.append(allChars.charAt(random.nextInt(allChars.length())));
         }
         
-        // Shuffle the password
+        // shuffles password
         return shuffleString(password.toString());
     }
     

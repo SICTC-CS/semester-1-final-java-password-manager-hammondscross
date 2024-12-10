@@ -66,7 +66,7 @@ public class PasswordManager {
         if (hint != null) {
             System.out.println("Password Hint: " + hint);
         } else {
-            System.out.println("No hint found for this username.");
+            System.out.println("No hint found for this username, maybe the account doesn't exist?");
         }
     }
     
@@ -110,7 +110,6 @@ public class PasswordManager {
             case "category":
                 newRecord = new PasswordRecord(oldRecord.getAccountName(), oldRecord.getUsername(), 
                     oldRecord.getPassword(), newValue);
-                // Handle category change
                 accounts.remove(index);
                 if (accounts.isEmpty()) {
                     categoryMap.remove(category);
@@ -128,6 +127,4 @@ public class PasswordManager {
         fileHandler.savePasswords(categoryMap);
         return true;
     }
-    
-    // Add methods for modifying and deleting accounts
 } 

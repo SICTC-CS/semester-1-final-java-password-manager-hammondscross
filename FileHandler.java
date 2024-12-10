@@ -10,7 +10,7 @@ import javax.crypto.spec.SecretKeySpec;
 public class FileHandler {
     private static final String FILE_PATH = "passwords.txt";
     private static final String USERS_FILE = "users.txt";
-    private static final String ENCRYPTION_KEY = "HawkDiddlyRizzGod12345678901234567";
+    private static final String ENCRYPTION_KEY = "HawkDiddlyRizzGod12345678901234567"; //constants use all caps
     
     private SecretKeySpec secretKey;
     
@@ -19,9 +19,9 @@ public class FileHandler {
         createFileIfNotExists(USERS_FILE);
         byte[] keyBytes = new byte[32];
         byte[] originalBytes = ENCRYPTION_KEY.getBytes();
-        System.arraycopy(originalBytes, 0, keyBytes, 0, 
+        System.arraycopy(originalBytes, 0, keyBytes, 0, //
             Math.min(originalBytes.length, keyBytes.length));
-        secretKey = new SecretKeySpec(keyBytes, "AES");
+        secretKey = new SecretKeySpec(keyBytes, "AES"); //imports make AES encryption lightwork no reaction
     }
     
     private String encrypt(String data) {
@@ -114,7 +114,7 @@ public class FileHandler {
         return false;
     }
     public void saveUser(User user) {
-        try (BufferedWriter writer = new BufferedWriter(new FileWriter(USERS_FILE, true))) {
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(USERS_FILE, true))) { //got to reuse buff and file from old projects
             // format -> username|passwordHash|firstName|lastName|hint
             writer.write(String.format("%s|%s|%s|%s|%s%n",
                 user.getUsername(),

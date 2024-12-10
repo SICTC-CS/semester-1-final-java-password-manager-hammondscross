@@ -11,7 +11,7 @@ public class PasswordRecord {
         this.category = category;
     }
     
-    // Getters
+    // getters NO SETTERS >:)
     public String getAccountName() { return accountName; }
     public String getUsername() { return username; }
     public String getPassword() { return password; }
